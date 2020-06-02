@@ -1,0 +1,30 @@
+body{
+    background-image: url("/billeder/cookies/baggrund.png");
+}
+
+#cookies{
+    position: fixed;
+    bottom: 0px;
+    margin-bottom: 1%;
+    width: 85%;
+    margin-left: 7.5%;
+    background-color:rgb(0,0,0,0.95);
+    color: white;
+   padding-left: 20px;
+    height: 175px;
+    display: inline;
+    border-radius: 10px;
+    
+}
+
+#cookies h5{
+    font-size: 20px;
+}
+
+#cookies p{
+    float: left;
+}
+#cookies button{
+float: right;
+
+}
