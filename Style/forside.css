@@ -1,0 +1,78 @@
+body{
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+
+.titel{
+    padding: 10px;
+    font-size: 60px;   
+    background-color: powderblue;
+    text-align: center;
+    position: sticky;
+    top: 50px;
+    z-index: 5;
+    text-shadow: 2px 2px rgb(122, 47, 47);
+    width: 800px;
+    margin: auto;
+    border-radius: 7px;
+}
+
+
+
+
+.eksempler{
+    width: 800px;
+    margin: auto;
+    
+
+}
+
+
+
+.overskrifter{
+    
+    padding: 10px, 10px;
+    text-decoration: none;
+    font-size: 25px;
+    margin-bottom: 3px;
+    border: 5px rgb(44, 52, 128) solid;
+    position: relative;
+    display: flex;
+    height: 250px;
+    background-color: rgb(239, 240, 196);
+   
+}
+
+img{
+    position: absolute;
+   width: 250px;
+   height: 225px; 
+   padding-left: 500px;
+   padding-top: 10px;
+  
+}
+
+.tekst{
+  
+    padding-left: 50px;
+    z-index: 2;
+}
+
+
+
+a {
+    color: black;
+    
+    text-decoration: none;
+}
+ a:hover {
+    color: green;
+    
+}
+
+a:active {
+    background-color: blue;
+}

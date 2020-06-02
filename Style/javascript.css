@@ -1,0 +1,48 @@
+body{
+    background-image: url("/billeder/Javascript/baggrund.png");
+}
+
+#lommeregner{
+    width: 80%;
+    background-color: burlywood;
+    padding: 15px;
+    border-radius: 6px;
+}
+#kode{
+    display: none;
+    width: 90%;
+}
+
+#kode2{
+    display:none
+}
+
+#lommeregner input{
+    width: 50px;
+    margin-left: 50px;
+    padding: 5px;
+    border-color: green;
+    
+}
+
+ h4{
+    font-size: 30px;
+    
+}
+
+#resultat {
+    font-weight: 600;
+    margin-left: 50px;
+   width: 50px;
+   background-color: rgb(233, 255, 105);
+   padding: 10px;
+   text-align: center;
+   border-radius: 6px;
+}
+
+#tegning{
+    width: 80%;
+    background-color: burlywood;
+    padding: 15px;
+    border-radius: 6px;
+}

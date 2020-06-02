@@ -1,0 +1,91 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1{
+    font-size: 55px;
+    padding-left: 15%;
+    text-shadow: 2px 2px rgb(116, 76, 76);
+}
+
+h2{
+    font-size: 35px;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.introduktion{
+    margin-left: 25px;
+    width: 40%;
+    display: inline-block;
+    padding: 15px;
+    background-color: rgb(25, 218, 201, 0.7);
+    font-weight: 800;  
+    border-radius: 10px;  
+    vertical-align: middle;
+}
+
+.billede{
+    display: inline-block;
+    text-align: right;
+    width: 45%;
+    vertical-align: middle;
+    margin-left: 70px ;
+    background-color: rgb(160, 82, 45, 0.85);
+    border-radius: 7px;
+    
+
+}
+
+.billede p{
+    text-align: center;
+}
+.billede img{
+    width: 93%;
+    
+}
+
+button{
+    background-color: green;
+    text-align: center;
+    padding: 10px;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 2px 2px rgb(3, 3, 3);
+    width: 150px;
+}
+
+
+
+button:hover{
+    background-color: rgb(84, 19, 92);
+    color: white;
+}
+
+button:active{
+    background-color: blue;
+}
+
+#forklaring {
+    margin: 5%;
+    display: none;
+}
+
+.knapper p {
+    text-align: center;
+}
+
+#forklaring p{
+    font-size: 20px;
+    font-weight: 600;
+}
+#forklaring h3{
+    font-size: 30px;
+    font-weight: 700;
+}

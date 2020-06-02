@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="scripts/undersider.js"></script>
+    <script src="scripts/javascript.js"></script>
+    <link rel="stylesheet" href="Style/javascript.css">
+    <link rel="stylesheet" href="Style/undersider.css">
+    <link rel="stylesheet" href="Style/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Javascript</title>
+</head>
+<body>
+    <div class="nav">
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="informatikb.html">Infromatik B</a></li>
+        <li><a href="klasse.html">Ab21</a></li>
+        <li id="mig">Thor Kryhlmand Iversen</li>
+    </div>
+
+    
+
+
+    <h1>Javascript</h1>
+
+    <div class="introduktion">
+        <h2>Introduktion</h2>
+    <p>
+       I dette forløb har vi arbejdet med kodesproget javascript,
+       som er et tekstbaseret programsprog. Forløbet er primært foregået 
+       på <a href="https://www.khanacademy.org/computing/computer-programming/programming">Khan Acedemy</a>,
+       hvilket er vist på billedet til højre
+    </p>
+    </div>
+<div class="billede">
+    <p><img src="billeder/Javascript/khan.png" alt=""></p>
+</div>
+
+<div class="knapper">
+<p>
+    <button class="vis" type="button" onclick="show()">Vis indhold</button>
+    <button class="gem" type="button" onclick="hide()">Gem indhold</button>
+</p>
+</div>
+
+<div id="forklaring">
+    <h3>Uddybende forklaring</h3>
+<br>
+    <p>
+        Vi har blandt andet lært om variabler og funktioner. I eksemplet nedenfor kan du 
+        se hvordan man kan bruge det til at lave noget som en lommeregner
+    </p>
+<br>
+        <div id="lommeregner">
+            <h4>lommeregner</h4>
+            <p>her kan du indtaste et tal </p>
+            <input type="number" name="tal1" id="tal1">
+            <p>Ved at gemme tallet som en variabel kan du nu kalde en funktion (udregn)
+                der ganger dit indtastede tal med 10
+            </p>
+            <p id="resultat"></p>
+            <button type="button" onclick="udregn()">Udregn</button>
+            <br>
+            <button id="viskode" type="button" onclick="visKode()">Vis kode</button>
+            <br>
+            <br>
+            <img id="kode" src="billeder/Javascript/kode.png" alt="">
+        </div>
+<br>
+        <p>Vi har også arbejdet meget med at animerer og tegne med javascript
+            i Khanacedemy var der dog mange indbygget funktioner, som gjorde det nemmer
+            at tegne med Javascript, men nedenfor er vist et eksempel på det vi kunne have lavet
+        </p>
+<br>
+        <div id="tegning" >
+            <h4>Tegn med Java</h4>
+            <canvas id="draw" width="800px" height="500px" style="border: 2px solid black;">din browser kan ikke vise canvas</canvas>
+            <button type="button" onclick="tegn()">tegn</button>
+            <button id="viskode2" type="button" onclick="visKode2()">Vis kode</button>
+         <br><br>
+            <img id="kode2" src="billeder/Javascript/kode2.png" alt="">
+        </div>
+</div>
+</p>
+
+
+
+</body>
+
+</html>
