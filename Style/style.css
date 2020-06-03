@@ -1,3 +1,4 @@
+
 body{
     margin: 0px;
     padding-top: 0%;
@@ -44,6 +45,9 @@ body{
 .nav a:active{
     color: blue;
 }
+
+
+
 #mig{
     float: right;
     text-decoration: none;
