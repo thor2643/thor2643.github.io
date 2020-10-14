@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="scripts/infb/bmi.js"></script>
+    <link rel="stylesheet" href="/Style/infb/bmi.css">
+    <link rel="stylesheet" href="/Style/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI beregner</title>
+</head>
+<body>
+    <div class="nav">
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="informatikb.html">Informatik B</a></li>
+        <li><a href="klasse.html">Ab21</a></li>
+        <li id="mig">Thor Kryhlmand Iversen</li>
+    </div>
+
+   <h1 id="overskrift">Beregn din BMI</h1> 
+        <div id="inputs">
+            <p>Indtast din højde i cm</p>
+            <input class="indtast" type="number" name="hoejde" id="hoejde">
+        
+            <p>indtast din vægt i kg</p>
+            <input class="indtast" type="number" name="vaegt" id="vaegt">
+            <br>
+            <br>
+            <button type="button" onclick="beregn()">Beregn</button>
+            
+            <p>Resultat</p>
+            <input type="text" name="" id="resultat">
+            <p id="kommentar"></p>
+            
+        </div>
+</body>
+</html>

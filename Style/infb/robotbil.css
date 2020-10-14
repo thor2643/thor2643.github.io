@@ -1,0 +1,215 @@
+html, body{
+    height: 100%;
+    background-color: rgb(180, 180, 180);;
+    
+}
+
+#overskrift {
+    background-color: #255;
+    margin-top: 50px;
+    padding-top: 10px;
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    border-bottom: 3px groove rgb(192, 77, 77);
+}
+
+#overskrift h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+    font-variant: small-caps;
+    font-size: 6rem;
+    margin-top: 5%;
+    color: white;
+    z-index: ;
+}
+
+#information{
+    background-color: rgb(180, 180, 180);
+    width: 100%;
+    height: auto;
+}
+
+#introduktion{
+    position: relative;
+    display: flex;
+    top: 2rem;
+    background-color: rgb(188, 201, 162);
+    height: 3000px;
+    width: 65rem;
+    border-radius: 1rem;
+    border: 2px groove rgb(192, 77, 77) ;
+    padding: 0.75rem;
+    padding-left: 1.5rem;
+    margin: auto;
+    
+}
+
+.tekst {
+    position: absolute;
+    /*position: relative;*/
+    width: 35rem;
+    padding-right: 35px;
+    
+}
+.tekst p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+ 
+}
+.tekst h2{
+    font-weight: 900;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2.25rem;
+}
+.tekst h2::after{
+    content: '';
+    position: absolute;
+    background-color: rgb(192, 77, 77);
+    height: 3px;
+    width: 32rem;
+    top: 2.75rem;
+    left: 0rem;
+}
+.tekst a{
+    font-weight: 700;
+    font-style: italic;
+
+}
+.tekst a:hover{  
+    font-size: 1.5rem;
+    cursor: grab;
+    font-weight: 900;
+}
+    
+
+.billede{
+    position: relative;
+    left: 35rem;
+    top: 1rem;
+    width: 25rem;
+    transition: width 1s, left 1s, height 1s;
+    height: 30rem;
+   
+}
+.billede img{
+    width: 100%;
+    max-height: 100%;
+    border-radius: 1rem;    
+}
+.billede:hover{
+    width: 45rem;
+    position: absolute;
+    left: 10rem;
+    z-index: 1;
+    height: 55rem;
+}
+
+
+#kode{
+    position: absolute;
+    top: 40rem;
+    width: 62rem;
+    opacity: 0;
+    transition: opacity 2s;
+}
+#kode h3{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    font-weight: 900; 
+    padding-top: 0.75rem;
+}
+#kode h3::before{
+    content: '';
+    position: absolute;
+    background-color: rgb(192, 77, 77);
+    height: 3px;
+    width: 50rem;
+    /*margin-bottom: 2rem;*/
+    left: 5rem;
+    top: 0rem;
+    
+}
+#kode h3::after{
+    content: '';
+    position: absolute;
+    background-color: rgb(192, 77, 77);
+    height: 3px;
+    width: 50rem;
+    /*margin-bottom: 2rem;*/
+    top: 3.75rem;
+    left: 5rem;
+}
+#kode p{
+    margin-left: 5rem;
+    margin-right: 5.0rem;
+    padding-top: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.1rem;
+    font-weight: 525;
+}
+
+#kodescroll{
+    margin: auto;
+    background-color: white;
+    width: 45rem;
+    height: 500px;
+    overflow: scroll;
+    padding-left: 1rem;
+    border: 2px groove rgb(192, 77, 77) ;
+    border-radius: 0.5rem;
+    margin-bottom: 4rem;
+}
+
+.kodedele{
+    margin-left: 7rem;
+    margin-right: 7rem;
+    background-color: rgb(192, 191, 120);
+    padding: auto;
+    padding-left: 1.75rem;
+    height: 4rem;
+    width: 48rem;
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 650;
+    transition: 0.5s;
+    color: rgb(3, 3, 3);
+    border-radius: 5px;
+    border: groove 2px grey;
+}
+
+.kodeforklaring {
+    background-color: #255;
+    width: 48rem;
+    margin-left: 7rem;
+    text-align: left;
+    height: auto;
+    display: none;
+    overflow: hidden;
+    color: rgb(255, 255, 255);
+   
+}
+
+.kodeforklaring img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: groove 3px rgb(192, 77, 77);
+    margin-top: 1rem;
+    border-radius: 1rem;
+    
+}
+
+#readNextDistance{
+    color: greenyellow;
+}
+#readNextDistance:hover{
+    color: blue;
+    cursor: grab;
+}
+
+.aktiv, .kodedele:hover{
+    background-color: yellow;
+}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <script src="/scripts/infb/robotbil.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotbil</title>
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/navbar-fixed/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="/Style/infb/robotbil.css">
+</head>
+<body onload="onLoad()">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <a class="navbar-brand" href="#">Robotbil</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/carousel/index.html">Forside <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Forløber</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/index.html">Informatik C</a>
+              </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </nav>
+      </header>
+
+
+    <div id="overskrift">
+        <h1>arduino <br> robotbil</h1>
+    </div>
+<div id="information">
+    <div id="introduktion">
+        <div class="tekst">
+            <h2>Introduktion</h2>
+            <p>
+            I dette forløb skulle vi ud fra en manual forsøge at bygge en selvkørende bil med arduino.
+            Formålet var at få bilen til at opdage forhindringer foran den, hvorefter den så vil bakke 
+            lidt og så dreje til en side. Vi har programmeret arduinoen med c++ og under <a onclick="programmering()">programmering</a>
+            kan man læse lidt om hvilken kode vi har brugt og hvad visse elementer i koden gør.
+            </p>
+        </div>
+        <div class="billede">
+            <img src="/billeder/robotbil/Emils.png" alt="kan ikke vises">  
+        </div>
+        
+    <div id="kode">
+        <h3>Programmeringsdelen</h3>
+        
+        <p>
+          Vi fik givet et program som kunne finde afstanden til objekter fra den ultrasoniske på bilen.
+          Programmets funktion er så at få bilen til at køre i en anden retning, hvis den opdager at 
+          der er en forhindring foran den. Nedenunder har jeg sat koden ind. For at læse om de enkelte dele
+          i koden, så kan du klikke på området som du gerne vil høre om.
+        </p>
+        <div id="kodescroll">
+          #include <'Servo.h>
+            <br>
+            Servo servo;
+            <br>
+            const int trigPin = 13;
+            <br>
+            const int echoPin = 12;<br>
+            const int servoPin = 11;<br><br>
+            
+            //motor pins<br>
+            const int in1Pin = 2;<br>
+            const int in2Pin = 1;<br>
+            const int in3Pin = 3;<br>
+            const int in4Pin = 4;<br>
+            enum Motor {LEFT, RIGHT};<br><br>
+            
+            void go(enum Motor m, int speed)<br>
+            {<br>
+              digitalWrite (m == LEFT ? in1Pin : in3Pin, speed > 0 ? HIGH : LOW);<br>
+              digitalWrite (m == LEFT ? in2Pin : in4Pin, speed <= 0 ? HIGH : LOW);<br>
+              //"?" lidt som if statement se https://stackoverflow.com/questions/795286/what-does-do-in-c<br>
+            
+            }<br><br>
+            
+            void testMotors ()<br>
+            {<br>
+              static int speed[8] = {128, 255, 128, 0, -128, -255, -128, 0}; //8 tallet angiver den maksimale størrelse af arrayen<br>
+              go(RIGHT, 0);<br>
+              for (unsigned char i = 0; i < 8; i++)<br>
+                go(LEFT, speed[i]), delay(200);<br>
+              for (unsigned char i = 0; i < 8; i++)<br>
+                go(RIGHT, speed[i]), delay(200);<br>
+            }<br><br>
+            
+            int readDistance()<br>
+            {<br>
+              digitalWrite(trigPin, HIGH);<br>
+              delayMicroseconds(10);<br>
+              digitalWrite(trigPin, LOW);<br>
+              unsigned long period = pulseIn(echoPin, HIGH);<br>
+              return period * 343 / 2000;<br>
+              //343 lydens hastighed. Omregning fra microseconds til millisekunder 2 kommer fra at den skal frem og tilbage https://forum.arduino.cc/index.php?topic=446688.0<br>
+              //burde retunerer afstanden i nanometer?<br>
+            }<br><br>
+            
+            #define NUM_ANGLES 7<br>
+            unsigned char sensorAngle[NUM_ANGLES] = {60, 70, 80, 90, 100, 110, 120};<br>
+            unsigned int distance [NUM_ANGLES];<br><br>
+            
+            void readNextDistance()<br>
+            {<br>
+              static unsigned char angleIndex = 0;<br>
+              static signed char step = 1;<br>
+              distance[angleIndex] = readDistance();<br>
+              angleIndex += step;<br>
+              if (angleIndex == NUM_ANGLES - 1) step = -1;<br>
+              else if (angleIndex == 0) step = 1;<br>
+              servo.write(sensorAngle[angleIndex]);<br>
+            }<br><br>
+            
+            void setup() {<br>
+              pinMode(trigPin, OUTPUT);<br>
+              pinMode(echoPin, INPUT);<br>
+              digitalWrite(trigPin, LOW);<br>
+              pinMode(in1Pin, OUTPUT);<br>
+              pinMode(in2Pin, OUTPUT);<br>
+              pinMode(in3Pin, OUTPUT);<br>
+              pinMode(in4Pin, OUTPUT);<br>
+              servo.attach(servoPin);<br>
+              servo.write(90);<br>
+              go(LEFT, 0);<br>
+              go(RIGHT, 0);<br>
+              testMotors();<br>
+              servo.write(sensorAngle[0]);<br>
+              delay(200);<br>
+              for (unsigned char i = 0; i < NUM_ANGLES; i++)<br>
+                readNextDistance(),<br>
+                                 delay(200);<br>
+            }<br><br>
+            
+            void loop() {<br>
+              readNextDistance();<br>
+              unsigned char tooClose = 0;<br>
+              for(unsigned char i = 0; i<NUM_ANGLES;i++)<br>
+              if(distance[i] < 300)<br>
+              {<br>
+                tooClose = 1;<br>
+              }<br>
+              if(tooClose)<br>
+              {<br>
+              go(LEFT, -180);<br>
+              go(RIGHT, -80);<br>
+              }<br>
+              else<br>
+              {<br>
+              go(LEFT, 255);<br>
+              go(RIGHT, 255);<br>
+              }<br>
+              delay(50);<br>
+              }<br><br>
+        </div> <br>
+        
+        <button id="1" class="kodedele" onclick="vis(this.id)">Variabel deklarationer </button>  
+          <div class="kodeforklaring" id="forklaring1">
+            <img src="/billeder/robotbil/Variabler.png " alt="kunne ikke indlæses">
+            <p>
+              I den første del af koden bliver alle variablerne deklareret samtidig med at der også bliver inkluderet
+              et library "Servo.h", som hjælper os med at styre vores servo motor, som drejer den ultrasoniske sensor
+              De fleste variabler er sat til at være konstante heltal, hvilket er fordelagtigt idet de angiver hvilke 
+              pins på arduinoen, som de diverse ting er koblet til, hvilket ikke må ændres i løbet af programmet. Til
+              sidst er der også blevet lavet en "enum", som fortæller at variablen Motor kun må være enten "LEFT" eller "RIGHT".
+              En enum begrænser altså en variabel til kun at må være de angivet værdier.
+            </p>
+          </div>
+
+          <button id="2" class="kodedele" onclick="vis(this.id)">go</button> 
+          <div class="kodeforklaring" id="forklaring1">
+            <img src="/billeder/robotbil/go.png" alt="">
+            <p>
+              Her oprettes der en funktion "go". Den er oprettet med "void", hvilket betyder at funktionen ikke skal 
+              retunere en værdi. Funktionen skal bruge to værdier "m" og "speed", hvor m henviser til variablen Motor
+              og dermed kun kan have værdien "LEFT" eller "RIGHT". digitalWrite er en kommando der enten slukker eller
+              tænder for en pin (5v eller 0v). Hvor digitalWrite er en enten eller kommando, så findes analogWrite også
+              , som kan sende spænding mellem 0v og 5v. Spørgsmålstegnet inde i digitalWrite fungerer lidt som en if
+              statement og kan skrives mere generelt som "betingelse ? resultat_hvis_sandt : resultat_hvis_falsk". I 
+              Vores tilfælde vil den altså tænde for in1Pin, hvis "m == Left" og "speed > 0". Denne funktion håndtere
+              altså vores to motorer og fortæller dem hvornår de skal køre og hvilken retning.
+            </p>
+          </div>
+
+          <button id="3" class="kodedele" onclick="vis(this.id)">testMotors </button> 
+          <div class="kodeforklaring" id="forklaring1">
+            <img src="/billeder/robotbil/testMotors.png" alt="">
+            <p>
+              funktionen "testMotors" tjekker begge motorer ved at kører dem igennem et for loop, som itererer igennem
+              arrayen "speed[]", som får motoren til at køre på fuld (255), halv (128) eller ingen (0) kraft både forlæns 
+              og baglæns. Nøgleordet static har noget at gøre med at den vil gemme værdien af speed igennem hele programmet
+              hvor en int ellers ville blive nulstillet for hver gang funktionen blev kaldt (klik evt. <a href="https://www.studytonight.com/cpp/static-keyword.php">her</a>
+              for uddybende forklaring). Unsigned char fortæller at i kan have værdierne i intervallet 0-255, hvor en signed
+              char ville kunne have værdierne i intervallet -127-128.
+            </p>
+          </div>
+
+          <button id="4" class="kodedele" onclick="vis(this.id)">readDistance</button> 
+          <div class="kodeforklaring" id="forklaring1">
+            <img src="/billeder/robotbil/readDistance.png" alt="">
+            <p>
+              Denne funktion returnerer afstanden til et objekt if forhold til den ultrasoniske sensor.
+              kommandoen "pulseIn" begynder at tælle (i mikrosekunder) fra når echoPin går fra "LOW" til "HIGH"
+              og stopper med at tælle når echoPin så går fra "HIGH" til "LOW" (altså når lyden kommer tilbage igen).
+              Nederst i funktionen bliver afstanden så beregnet ved at bruge lydens hastighed. Der er divideret med 2
+              fordi lyden skal frem og tilbage. Vi er lidt i tvivl om hvad enheden på afstanden bliver. Den vil gerne
+              have det i millimeter, men det har vi ikke helt kunne komme frem til endnu.
+
+            </p>
+          </div>
+      
+          <button id="5" class="kodedele" onclick="vis(this.id)">To arraylister </button> 
+          <div class="kodeforklaring" id="forklaring1">
+            <img src="/billeder/robotbil/toArraylister.png" alt="">
+            <p>
+              I denne del er der blevet oprettet to arraylister, som begge maks må have 7 værdier.
+              Den først arrayliste angiver nogle vinkler som skal bruges til at styre servomotoren. 
+              Den anden liste vender vi tilbage til under <i id="readNextDistance" onclick="vis(6)">readNextDistance</i>
+            </p>
+          </div>
+
+          <button id="6" class="kodedele" onclick="vis(this.id)">readNextDistance </button> 
+          <div class="kodeforklaring" id="forklaring1">
+            <img src="/billeder/robotbil/readNextDistance.png" alt="">
+            <p>
+              Denne funtion sørger for at opdatere afstanden til et objekt til forskellige vinkler.
+              Først bliver der deklaret to static variabler "angleindex" og "step", hvor step er en 
+              signed char, hvilket betyder at den også kan blive minus. Funktionen opdaterer værdierne i arraylisten
+              "distance[]" ved at bruge funktionen readDistance. If og else if kommandoerne sørger for at
+              arraylistens længde (antal mulige værdier) ikke overskrides ved at sætte step til hhv. 1 eller -1.
+              Den sidste kommando "servo.Write()" sørger for at dreje servomotoren hen på vinklen bestemt af værdien 
+              på angleIndex (0=60, 1=70 osv.).
+            </p>
+          </div>
+
+          <button id="7" class="kodedele" onclick="vis(this.id)">setup </button> 
+          <div class="kodeforklaring" id="forklaring1">
+            <img src="/billeder/robotbil/setup.png" alt="">
+            <p>
+              Under setup fortæller vi med "pinMode" hvilke pins der er hhv. "OUTPUT" og "INPUT".
+              Herefter sørger også for at servomotoren start i en vinkel 90 grader.
+              I setup sørger vi med "go(Motor, 0)"" for at begge motorer ikke er sat til at køre
+              inden vi så lige kører funktion "testMotors()" igennem en enkelt gang.
+              Til har vi et for loop, som har til funktion at sørge for at der er givet en distance
+              til hver vinkel, altså at arraylisten distance[] ikke har nogle værdier på 0.
+            </p>
+          </div>
+
+          <button id="8" class="kodedele" onclick="vis(this.id)">loop </button> 
+          <div class="kodeforklaring" id="forklaring1">
+            <img src="/billeder/robotbil/loop.png" alt="">
+            <p>
+              loop er den del af koden som kører om og om igen lige indtil man slukker for arduinoen.
+              det første der sker i loop er at den finder alle afstandene til de forskellige vinkler.
+              For loopen iterer nu igennem "distance[]"" for at se om der skulle vøre en afstand der er under 300 (mm?cm?).
+              Hvis det er tilfældet så sætter den "tooClose" til 1, hvilket betyder at den næste if kommando bliver true
+              og dermed for bilen til bakke samtidig med at ændre retning mod venstre. Ellers hvis der ikke blev fundet en distance 
+              på under 300 bananer, så skal den fortsat kører på fuld kraft fremad.
+            </p>
+          </div>
+    </div>
+
+    </div>
+   
+</div>
+ 
+
+
+
+</body>
+</html>
