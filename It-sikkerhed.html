@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Style/infb/it-sikkerhed.css">
+    <title>It-sikkerhed</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/navbar-fixed/">
+
+    <script src="/scripts/infb/it-sikkerhed.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Style/infb/robotbil.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <a class="navbar-brand" href="#">It-sikkerhed</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/carousel/index.html">Forside <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Forløber</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/index.html">Informatik C</a>
+              </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </nav>
+      </header>
+
+<div id="overskrifter">
+    <li class="overskrifttekst" id="FIT" onclick="vis(this.id)">FIT-modellen</li>    
+    <li class="overskrifttekst" id="hack" onclick="vis(this.id)">Hacker typer</li>
+    <li class="overskrifttekst" id="ACID" onclick="vis(this.id)">ACID-modellen</li>
+    <li class="overskrifttekst" id="trans" onclick="vis(this.id)">Transaktions-eksempler</li>
+    <li class="overskrifttekst" id="tilstand" onclick="vis(this.id)">Tilstandsdiagram</li>
+    <h2></h2>
+
+</div>
+
+
+<div class="forklaringer" id="FIT-modellen">
+    <h1>FIT-Modellen</h1>
+    <div class="billedetekst">
+        <p>Når man snakker om beskyttelse af informationer på nettet, så er der tre kernebegreber, som er
+        beskrevet af FIT-Modellen. De tre forkortelser, som FIT er en forkortelse for er <br>
+        &emsp;<b>- Fortrolighed</b><br>
+        Fortrolighed sikrer at det kun er personer eller systemer, som er autoriseret til at læse,
+        som har adgang
+        <br>
+        &emsp;<b>- Integritet</b><br>
+        Integritet sikrer at kun brugere der har adgang til at kunne ændre/slette har adgang til
+        informationskilden.
+        <br>
+        &emsp;<b>- Tilgængelighed</b><br>
+        Tilgængelighed er adgangen for dem både må læse og ændre/slette i informationen
+        <br><br>
+        Et spørgsmål man kan stille sig selv er hvorvidt man kan have integritet uden at have fortrolighed.
+
+    </p>
+
+    </div>
+    <div class="billedeboks" >
+        <img class="billeder" src="/billeder/infb/it-sikkerhed/CIA.png" alt="Billede kan ikke vises">
+    </div>
+
+</div>
+<div class="forklaringer" id="hackerTyper">
+    <h1>Hacker Typer</h1>
+    <div class="billedetekst">
+        <p>Mange kender hacker fra diverse Hollywood's film, hvor hackeren typisk sammen med en gruppe 
+        hacker sig ind på et banks sikkerhedssystem og sætter der ud af spillet. Sandheden er dog at der 
+        findes tre typer af hackere<br>
+        &emsp;<b>- Hacker</b><br>
+        Hacker er den generelle betegnelse for en person, der igennem en computer kan få uretmæssig adgang til et it-system
+        <br>
+        &emsp;<b>- Cracker/black hats</b><br>
+        Black hats er nok det nærmeste vi kommer på de hacker, som vi ser fra Hollywood. Disse hackere hacker med
+        ondt i sinde. Deres bevæggrunde kan enten være penge, protest eller blot berømmelse.
+        <br>
+        &emsp;<b>- Security/white hats</b><br>
+        Sikkerheds hackere er hacker, som bliver lejet af virksomhederne, der ønsker at finde "huller"
+        i deres it-systemer. White hats har altså til opgave at stoppe black hats <br>
+        Med hacking skal hacking bekæmpes:)
+        
+    </p>
+
+    </div>
+    <div class="billedeboks" >
+        <img class="billeder" src="/billeder/infb/it-sikkerhed/hacker.png" alt="Billede kan ikke vises">
+    </div>
+
+</div>
+<div class="forklaringer" id="ACID-modellen">
+    <h1>ACID-modellen</h1>
+    <div class="billedetekst">
+        <p>Når man laver transaktioner er det godt at have kendskab til ACID-modellen, som giver en god retninglinje får den gode transaktion<br>
+        &emsp;<b>- Atomicity</b><br>
+        Atomicity går i alt sin enkelthed ud på at gå en med alt eller intet. Enten så fuldender man overførslen eller også lader man vær.
+        <br>
+        &emsp;<b>- Consistency</b><br>
+        For at opretholde konsistens i en database skal man forsøge kun at eksekvere transaktioner i isolation.
+        <br>
+        &emsp;<b>- Isolation</b><br>
+        Hænger sammen med den ovenfor og gør os opmærksom på at transaktioner ikke kender til hinanden og en transaktion skal derfor ikke afhænge
+        af en anden transaktion.
+        <br>
+        &emsp;<b>- Durability</b><br>
+        Durability handler om at en transaktion skal være gældende når først den er blevet succesfuldt udført. Man skal altså sikrer at 
+        overførslen er gemt selvom systemet skulle gå hen at chrashe.
+        
+    </p>
+
+    </div>
+    <div class="billedeboks" >
+        <img class="billeder" src="/billeder/infb/it-sikkerhed/acid.png" alt="Billede kan ikke vises">
+    </div>
+
+</div>
+<div class="forklaringer" id="transEksempler">
+    <h1>Transaktionseksempel</h1>
+    <div class="billedetekst">
+        <p>
+
+        </p>    
+    </div>
+    <div class="billedeboks" id="undtagelse">
+        <img class="billeder" id="undtagelse1" src="/billeder/infb/it-sikkerhed/transeksempel.png" alt="Billede kan ikke vises">
+    </div>
+</div>
+<div class="forklaringer" id="tilstandsdiagram">
+    <h1>Tilstandsdiagram</h1>
+    <div class="billedetekst">
+        <p>Til højre er der afbilledet et tilstandsdiagram for en transaktion. Et tilstandsdiagram giver et godt overblik over en transaktions
+        forløb. Hvis alt gå succesfuldt, så vil transaktion lave nogle deloverdragelse, som vil være permanente, får så at lave den fulde overdragels
+        hvilket afslutter transaktionen. Opstår der derimod en fejl enten i starten eller efter nogle af deloverdragelserne, så vil transaktionen 
+        forsøge at lave en tilbagetrækning af påbegyndte processer, hvorefter transaktionen afluttes.
+        
+        
+    </p>
+
+    </div>
+    <div class="billedeboks" >
+        <img class="billeder" src="/billeder/infb/it-sikkerhed/diagram.png" alt="Billede kan ikke vises">
+    </div>
+
+</div>
+    
+</body>
+</html>
